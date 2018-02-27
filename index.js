@@ -14,13 +14,29 @@ let _ = require('underscore');
 // let PGMovies = _.where(movies, {contentRating: 'PG'});
 // let PGMovies2 = _.filter(movies, (e) => e.contentRating === 'PG');
 
-// let PGMovies = _.where(movies, {contentRating: 'PG', imdbRating: 8.5});
-// let PGMovies2 = _.filter(movies, (e) => e.contentRating === 'PG' && e.imdbRating === 8.5);
+// let PG8Movies = _.where(movies, {contentRating: 'PG', imdbRating: 8.5});
+// let PG8Movies2 = _.filter(movies, (e) => e.contentRating === 'PG' && e.imdbRating === 8.5);
 
-let myFriends = ['bob', 'joe', 'jen', 'bruce', 'linds'];
-let yourFriends = ['bob', 'jack', 'jen', 'bruce', 'brit'];
+// let myFriends = ['bob', 'joe', 'jen', 'bruce', 'linds'];
+// let yourFriends = ['bob', 'jack', 'jen', 'bruce', 'brit'];
 
-let allFriends = _.union(myFriends, yourFriends);
-let sharedFriends = _.intersection(myFriends, yourFriends);
+// let allFriends = _.union(myFriends, yourFriends);
+// let sharedFriends = _.intersection(myFriends, yourFriends);
 
-let 
+function longSum(n) {
+    let myTotal = 0;
+    for (let i = 0; i < n; i++) {
+        myTotal += i;
+    }
+    return myTotal;
+}
+
+let memoizeFunction = _.memoize(longSum);
+
+console.time('timer');
+let mySum = memoizeFunction(1000000000);
+console.timeEnd('timer');
+
+console.time('timer');
+mySum = memoizeFunction(1000000000);
+console.timeEnd('timer');
